@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Screenshot ToDo Extractor</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="app">
+      <section class="workspace">
+        <div class="panel upload-panel">
+          <header>
+            <p class="eyebrow">Screenshot ToDo</p>
+            <h1>スクリーンショットから課題・予定ToDoを作成</h1>
+          </header>
+
+          <label class="drop-zone" for="imageInput">
+            <input id="imageInput" type="file" accept="image/*" />
+            <span class="upload-icon">+</span>
+            <span class="upload-title">スクリーンショット画像をアップロード</span>
+            <span class="upload-subtitle">PNG、JPG、WEBPに対応</span>
+          </label>
+
+          <div class="actions">
+            <button id="extractButton" type="button" disabled>課題名・締切・予定を抽出</button>
+            <button id="clearButton" class="secondary" type="button" disabled>クリア</button>
+          </div>
+
+          <div id="status" class="status" aria-live="polite">画像を選択してください。</div>
+        </div>
+
+        <div class="panel preview-panel">
+          <div class="panel-header">
+            <h2>プレビュー</h2>
+            <span id="fileName">未選択</span>
+          </div>
+          <div class="preview-frame">
+            <img id="previewImage" alt="アップロードしたスクリーンショットのプレビュー" hidden />
+            <p id="previewEmpty">ここに画像が表示されます。</p>
+          </div>
+        </div>
+
+        <div class="panel result-panel">
+          <div class="panel-header">
+            <h2>ToDo</h2>
+            <span id="todoCount">0件</span>
+          </div>
+          <div id="todoList" class="todo-list">
+            <p class="empty">抽出結果はまだありません。</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
